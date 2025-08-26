@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sapna Dental Care - AI-Powered 3D Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            perspective: 1000px;
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonPulse {
+            from { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+            to { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 40px rgba(102, 126, 234, 0.3); }
+        }
+        
+        .ai-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: aiFloat 4s linear infinite;
+        }
+        
+        @keyframes aiFloat {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+        
+        .morphing-shape {
+            animation: morph 8s ease-in-out infinite;
+        }
+        
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hologram-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hologram-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: hologramScan 3s linear infinite;
+        }
+        
+        @keyframes hologramScan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .ai-chat-bubble {
+            animation: bubbleFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes bubbleFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- AI Particles Background -->
+    <div id="aiParticles" class="fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-gradient">🤖 Sapna Dental AI</div>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">Home</a>
+                    <a href="#ai-services" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">AI Services</a>
+                    <a href="#3d-tour" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">3D Tour</a>
+                    <a href="#contact" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">Contact</a>
+                    <button onclick="openAIAppointment()" class="neon-glow bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300">
+                        AI Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="morphing-shape absolute top-20 left-10 w-32 h-32 bg-blue-500 opacity-20"></div>
+            <div class="morphing-shape absolute bottom-20 right-10 w-48 h-48 bg-purple-500 opacity-15" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+            <div class="floating">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 text-gradient">
+                    Future of Dental Care
+                </h1>
+            </div>
+            <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
+                Experience revolutionary AI-powered dental diagnostics and 3D treatment planning at Sapna Dental Care
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="startAIConsultation()" class="hologram-effect neon-glow bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:scale-110 transition-all duration-300">
+                    Start AI Consultation
+                </button>
+                <button onclick="open3DTour()" class="glass-effect border-2 border-white px-8 py-4 rounded-full font-bold text-lg hover:scale-110 transition-all duration-300">
+                    Take 3D Virtual Tour
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Services Section -->
+    <section id="ai-services" class="py-20 bg-gradient-to-b from-black to-gray-900 relative">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gradient mb-6">AI-Powered Services</h2>
+                <p class="text-xl text-gray-300">Revolutionary technology meets exceptional dental care</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-3d glass-effect p-8 rounded-2xl">
+                    <div class="text-6xl mb-6 floating">🧠</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gradient">AI Diagnostics</h3>
+                    <p class="text-gray-300 mb-4">Advanced AI algorithms analyze X-rays and scans for precise diagnosis in seconds.</p>
+                    <div class="bg-blue-500 h-1 w-full rounded-full">
+                        <div class="bg-white h-1 w-3/4 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <div class="card-3d glass-effect p-8 rounded-2xl">
+                    <div class="text-6xl mb-6 floating" style="animation-delay: -1s;">🦷</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gradient">3D Treatment Planning</h3>
+                    <p class="text-gray-300 mb-4">Visualize your treatment in stunning 3D before we begin any procedure.</p>
+                    <div class="bg-purple-500 h-1 w-full rounded-full">
+                        <div class="bg-white h-1 w-4/5 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <div class="card-3d glass-effect p-8 rounded-2xl">
+                    <div class="text-6xl mb-6 floating" style="animation-delay: -2s;">🤖</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gradient">Smart Scheduling</h3>
+                    <p class="text-gray-300 mb-4">AI-powered appointment system that learns your preferences and optimizes scheduling.</p>
+                    <div class="bg-pink-500 h-1 w-full rounded-full">
+                        <div class="bg-white h-1 w-5/6 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <div class="card-3d glass-effect p-8 rounded-2xl">
+                    <div class="text-6xl mb-6 floating" style="animation-delay: -3s;">📱</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gradient">Virtual Reality Tours</h3>
+                    <p class="text-gray-300 mb-4">Explore our clinic and procedures in immersive virtual reality.</p>
+                    <div class="bg-green-500 h-1 w-full rounded-full">
+                        <div class="bg-white h-1 w-2/3 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <div class="card-3d glass-effect p-8 rounded-2xl">
+                    <div class="text-6xl mb-6 floating" style="animation-delay: -4s;">⚡</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gradient">Instant Analysis</h3>
+                    <p class="text-gray-300 mb-4">Real-time oral health assessment using advanced computer vision.</p>
+                    <div class="bg-yellow-500 h-1 w-full rounded-full">
+                        <div class="bg-white h-1 w-4/5 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <div class="card-3d glass-effect p-8 rounded-2xl">
+                    <div class="text-6xl mb-6 floating" style="animation-delay: -5s;">🎯</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gradient">Precision Care</h3>
+                    <p class="text-gray-300 mb-4">Robot-assisted procedures for unmatched precision and comfort.</p>
+                    <div class="bg-red-500 h-1 w-full rounded-full">
+                        <div class="bg-white h-1 w-5/6 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Interactive Section -->
+    <section id="3d-tour" class="py-20 bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gradient mb-6">3D Virtual Experience</h2>
+                <p class="text-xl text-gray-300">Immerse yourself in our state-of-the-art facility</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="glass-effect p-6 rounded-xl hover:scale-105 transition-all duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-gradient">🏥 Virtual Clinic Tour</h3>
+                        <p class="text-gray-300">Walk through our modern facility with interactive 360° views and detailed equipment information.</p>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-xl hover:scale-105 transition-all duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-gradient">🔬 Procedure Simulation</h3>
+                        <p class="text-gray-300">Watch detailed 3D animations of dental procedures to understand your treatment better.</p>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-xl hover:scale-105 transition-all duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-gradient">📊 Real-time Analytics</h3>
+                        <p class="text-gray-300">View live data about treatment progress and oral health metrics in beautiful 3D visualizations.</p>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="glass-effect p-8 rounded-2xl neon-glow">
+                        <div class="text-center">
+                            <div class="text-8xl mb-6 floating">🦷</div>
+                            <h3 class="text-3xl font-bold mb-4 text-gradient">Interactive 3D Model</h3>
+                            <p class="text-gray-300 mb-6">Click and drag to explore a detailed 3D model of dental anatomy</p>
+                            <button onclick="start3DInteraction()" class="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-3 rounded-full font-bold hover:scale-110 transition-all duration-300 neon-glow">
+                                Start 3D Interaction
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chat Assistant -->
+    <div id="aiChatWidget" class="fixed bottom-6 right-6 z-50">
+        <div class="ai-chat-bubble glass-effect p-4 rounded-2xl neon-glow max-w-sm">
+            <div class="flex items-center mb-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3">
+                    <span class="text-xl">🤖</span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gradient">AI Assistant</h4>
+                    <p class="text-xs text-gray-300">Online now</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-300 mb-3">Hi! I'm your AI dental assistant. How can I help you today?</p>
+            <button onclick="openAIChat()" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 py-2 rounded-lg font-semibold hover:scale-105 transition-all duration-300">
+                Start AI Chat
+            </button>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black relative">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gradient mb-6">Connect With Us</h2>
+                <p class="text-xl text-gray-300">Experience the future of dental care today</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-3d glass-effect p-8 rounded-2xl text-center">
+                    <div class="text-4xl mb-4 floating">📍</div>
+                    <h3 class="text-xl font-bold mb-2 text-gradient">Location</h3>
+                    <p class="text-gray-300">123 Future Street<br>Tech District<br>Innovation City 12345</p>
+                </div>
+                
+                <div class="card-3d glass-effect p-8 rounded-2xl text-center">
+                    <div class="text-4xl mb-4 floating" style="animation-delay: -1s;">📞</div>
+                    <h3 class="text-xl font-bold mb-2 text-gradient">AI Hotline</h3>
+                    <p class="text-gray-300">24/7 AI Support<br>(555) AI-DENTAL<br>Emergency: (555) 911-CARE</p>
+                </div>
+                
+                <div class="card-3d glass-effect p-8 rounded-2xl text-center">
+                    <div class="text-4xl mb-4 floating" style="animation-delay: -2s;">⏰</div>
+                    <h3 class="text-xl font-bold mb-2 text-gradient">Smart Hours</h3>
+                    <p class="text-gray-300">AI Available 24/7<br>Clinic: Mon-Sat 8AM-8PM<br>Virtual Consultations Anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Appointment Modal -->
+    <div id="aiAppointmentModal" class="fixed inset-0 bg-black bg-opacity-80 hidden z-50 flex items-center justify-center p-4">
+        <div class="glass-effect rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto neon-glow">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-3xl font-bold text-gradient">AI-Powered Booking</h3>
+                    <button onclick="closeAIAppointment()" class="text-gray-400 hover:text-white text-3xl transition-all duration-300 hover:scale-110">&times;</button>
+                </div>
+                
+                <div class="mb-6 p-4 glass-effect rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <span class="text-2xl mr-3">🤖</span>
+                        <span class="font-semibold text-gradient">AI Assistant:</span>
+                    </div>
+                    <p class="text-gray-300">I'll help you find the perfect appointment slot based on your needs and preferences!</p>
+                </div>
+                
+                <form id="aiAppointmentForm" onsubmit="submitAIAppointment(event)" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+                            <input type="text" id="aiPatientName" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Phone Number *</label>
+                            <input type="tel" id="aiPatientPhone" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                        <input type="email" id="aiPatientEmail" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">AI Service Selection *</label>
+                        <select id="aiServiceType" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                            <option value="">Let AI recommend the best service</option>
+                            <option value="AI Diagnostics">AI Diagnostics & Analysis</option>
+                            <option value="3D Treatment Planning">3D Treatment Planning</option>
+                            <option value="Virtual Consultation">Virtual Reality Consultation</option>
+                            <option value="Smart Cleaning">AI-Guided Cleaning</option>
+                            <option value="Emergency AI">Emergency AI Assessment</option>
+                            <option value="Cosmetic AI">AI Cosmetic Planning</option>
+                        </select>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Preferred Date *</label>
+                            <input type="date" id="aiAppointmentDate" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Time Preference</label>
+                            <select id="aiAppointmentTime" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                                <option value="">AI will optimize timing</option>
+                                <option value="Morning">Morning (8AM-12PM)</option>
+                                <option value="Afternoon">Afternoon (12PM-5PM)</option>
+                                <option value="Evening">Evening (5PM-8PM)</option>
+                                <option value="Flexible">Flexible - AI Choose Best</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Describe Your Concerns</label>
+                        <textarea id="aiAppointmentNotes" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white" placeholder="Tell our AI about any symptoms, concerns, or specific requests..."></textarea>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button type="button" onclick="closeAIAppointment()" class="flex-1 px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition-all duration-300">
+                            Cancel
+                        </button>
+                        <button type="submit" class="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-all duration-300 neon-glow font-semibold">
+                            Let AI Book My Appointment
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Animation -->
+    <div id="aiSuccessMessage" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 glass-effect p-8 rounded-2xl neon-glow hidden z-50 text-center">
+        <div class="text-6xl mb-4 floating">✨</div>
+        <h3 class="text-2xl font-bold text-gradient mb-4">AI Booking Successful!</h3>
+        <p class="text-gray-300">Our AI has optimized your appointment and will send confirmation shortly.</p>
+    </div>
+
+    <script>
+        // AI Particles Animation
+        function createAIParticles() {
+            const container = document.getElementById('aiParticles');
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'ai-particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                container.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 6000);
+            }, 300);
+        }
+
+        // Set minimum date to today
+        document.getElementById('aiAppointmentDate').min = new Date().toISOString().split('T')[0];
+
+        function openAIAppointment() {
+            document.getElementById('aiAppointmentModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAIAppointment() {
+            document.getElementById('aiAppointmentModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            document.getElementById('aiAppointmentForm').reset();
+        }
+
+        function submitAIAppointment(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('aiPatientName').value,
+                phone: document.getElementById('aiPatientPhone').value,
+                email: document.getElementById('aiPatientEmail').value,
+                service: document.getElementById('aiServiceType').value,
+                date: document.getElementById('aiAppointmentDate').value,
+                time: document.getElementById('aiAppointmentTime').value,
+                notes: document.getElementById('aiAppointmentNotes').value
+            };
+
+            console.log('AI Appointment booked:', formData);
+            
+            closeAIAppointment();
+            showAISuccess();
+        }
+
+        function showAISuccess() {
+            const successMsg = document.getElementById('aiSuccessMessage');
+            successMsg.classList.remove('hidden');
+            
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 4000);
+        }
+
+        function startAIConsultation() {
+            alert('🤖 AI Consultation starting... Our advanced AI will analyze your dental health needs and provide personalized recommendations!');
+        }
+
+        function open3DTour() {
+            alert('🏥 Welcome to our 3D Virtual Tour! Experience our state-of-the-art facility in immersive 3D.');
+        }
+
+        function start3DInteraction() {
+            alert('🦷 3D Interactive Model activated! Explore detailed dental anatomy with our advanced 3D visualization.');
+        }
+
+        function openAIChat() {
+            alert('💬 AI Chat Assistant activated! Our intelligent chatbot is ready to answer all your dental questions 24/7.');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('aiAppointmentModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAIAppointment();
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize particles when page loads
+        window.addEventListener('load', createAIParticles);
+
+        // Add interactive hover effects to cards
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97530dae71954722',t:'MTc1NjIwODQxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
