@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sapna Dental Care - AI-Powered 3D Experience</title>
+    <title>Sapna Dental Care - Advanced 3D Experience</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
@@ -138,15 +138,37 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <div class="text-2xl font-bold text-gradient">🤖 Sapna Dental AI</div>
+                    <div class="text-2xl font-bold text-gradient">🦷 Sapna Dental Care</div>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#home" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">Home</a>
-                    <a href="#ai-services" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">AI Services</a>
+                    <a href="#services" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">Services</a>
                     <a href="#3d-tour" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">3D Tour</a>
                     <a href="#contact" class="text-white hover:text-blue-300 transition-all duration-300 hover:scale-110">Contact</a>
-                    <button onclick="openAIAppointment()" class="neon-glow bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300">
-                        AI Booking
+                    <button onclick="openAppointment()" class="neon-glow bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300">
+                        Book Now
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-blue-300 transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden glass-effect mt-2 rounded-lg">
+                <div class="px-4 py-2 space-y-2">
+                    <a href="#home" class="block text-white hover:text-blue-300 transition-all duration-300 py-2">Home</a>
+                    <a href="#services" class="block text-white hover:text-blue-300 transition-all duration-300 py-2">Services</a>
+                    <a href="#3d-tour" class="block text-white hover:text-blue-300 transition-all duration-300 py-2">3D Tour</a>
+                    <a href="#contact" class="block text-white hover:text-blue-300 transition-all duration-300 py-2">Contact</a>
+                    <button onclick="openAppointment()" class="w-full mt-2 neon-glow bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300">
+                        Book Now
                     </button>
                 </div>
             </div>
@@ -162,16 +184,16 @@
         
         <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
             <div class="floating">
-                <h1 class="text-6xl md:text-8xl font-bold mb-6 text-gradient">
+                <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 text-gradient">
                     Future of Dental Care
                 </h1>
             </div>
-            <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-                Experience revolutionary AI-powered dental diagnostics and 3D treatment planning at Sapna Dental Care
+            <p class="text-lg sm:text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto px-4">
+                Experience revolutionary advanced dental diagnostics and 3D treatment planning at Sapna Dental Care
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button onclick="startAIConsultation()" class="hologram-effect neon-glow bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:scale-110 transition-all duration-300">
-                    Start AI Consultation
+                <button onclick="startConsultation()" class="hologram-effect neon-glow bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:scale-110 transition-all duration-300">
+                    Start Consultation
                 </button>
                 <button onclick="open3DTour()" class="glass-effect border-2 border-white px-8 py-4 rounded-full font-bold text-lg hover:scale-110 transition-all duration-300">
                     Take 3D Virtual Tour
@@ -180,19 +202,19 @@
         </div>
     </section>
 
-    <!-- AI Services Section -->
-    <section id="ai-services" class="py-20 bg-gradient-to-b from-black to-gray-900 relative">
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gradient-to-b from-black to-gray-900 relative">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold text-gradient mb-6">AI-Powered Services</h2>
-                <p class="text-xl text-gray-300">Revolutionary technology meets exceptional dental care</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-6">Advanced Services</h2>
+                <p class="text-lg sm:text-xl text-gray-300 px-4">Revolutionary technology meets exceptional dental care</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card-3d glass-effect p-8 rounded-2xl">
-                    <div class="text-6xl mb-6 floating">🧠</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gradient">AI Diagnostics</h3>
-                    <p class="text-gray-300 mb-4">Advanced AI algorithms analyze X-rays and scans for precise diagnosis in seconds.</p>
+                    <div class="text-6xl mb-6 floating">🔬</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gradient">Digital Diagnostics</h3>
+                    <p class="text-gray-300 mb-4">Advanced digital algorithms analyze X-rays and scans for precise diagnosis in seconds.</p>
                     <div class="bg-blue-500 h-1 w-full rounded-full">
                         <div class="bg-white h-1 w-3/4 rounded-full animate-pulse"></div>
                     </div>
@@ -208,9 +230,9 @@
                 </div>
                 
                 <div class="card-3d glass-effect p-8 rounded-2xl">
-                    <div class="text-6xl mb-6 floating" style="animation-delay: -2s;">🤖</div>
+                    <div class="text-6xl mb-6 floating" style="animation-delay: -2s;">📅</div>
                     <h3 class="text-2xl font-bold mb-4 text-gradient">Smart Scheduling</h3>
-                    <p class="text-gray-300 mb-4">AI-powered appointment system that learns your preferences and optimizes scheduling.</p>
+                    <p class="text-gray-300 mb-4">Intelligent appointment system that learns your preferences and optimizes scheduling.</p>
                     <div class="bg-pink-500 h-1 w-full rounded-full">
                         <div class="bg-white h-1 w-5/6 rounded-full animate-pulse"></div>
                     </div>
@@ -288,24 +310,7 @@
         </div>
     </section>
 
-    <!-- AI Chat Assistant -->
-    <div id="aiChatWidget" class="fixed bottom-6 right-6 z-50">
-        <div class="ai-chat-bubble glass-effect p-4 rounded-2xl neon-glow max-w-sm">
-            <div class="flex items-center mb-3">
-                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3">
-                    <span class="text-xl">🤖</span>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gradient">AI Assistant</h4>
-                    <p class="text-xs text-gray-300">Online now</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-300 mb-3">Hi! I'm your AI dental assistant. How can I help you today?</p>
-            <button onclick="openAIChat()" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 py-2 rounded-lg font-semibold hover:scale-105 transition-all duration-300">
-                Start AI Chat
-            </button>
-        </div>
-    </div>
+
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-black relative">
@@ -324,96 +329,96 @@
                 
                 <div class="card-3d glass-effect p-8 rounded-2xl text-center">
                     <div class="text-4xl mb-4 floating" style="animation-delay: -1s;">📞</div>
-                    <h3 class="text-xl font-bold mb-2 text-gradient">AI Hotline</h3>
-                    <p class="text-gray-300">24/7 AI Support<br>(555) AI-DENTAL<br>Emergency: (555) 911-CARE</p>
+                    <h3 class="text-xl font-bold mb-2 text-gradient">Contact</h3>
+                    <p class="text-gray-300">24/7 Support<br>(555) DENTAL-CARE<br>Emergency: (555) 911-CARE</p>
                 </div>
                 
                 <div class="card-3d glass-effect p-8 rounded-2xl text-center">
                     <div class="text-4xl mb-4 floating" style="animation-delay: -2s;">⏰</div>
-                    <h3 class="text-xl font-bold mb-2 text-gradient">Smart Hours</h3>
-                    <p class="text-gray-300">AI Available 24/7<br>Clinic: Mon-Sat 8AM-8PM<br>Virtual Consultations Anytime</p>
+                    <h3 class="text-xl font-bold mb-2 text-gradient">Hours</h3>
+                    <p class="text-gray-300">Support Available 24/7<br>Clinic: Mon-Sat 8AM-8PM<br>Virtual Consultations Anytime</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AI Appointment Modal -->
-    <div id="aiAppointmentModal" class="fixed inset-0 bg-black bg-opacity-80 hidden z-50 flex items-center justify-center p-4">
+    <!-- Appointment Modal -->
+    <div id="appointmentModal" class="fixed inset-0 bg-black bg-opacity-80 hidden z-50 flex items-center justify-center p-4">
         <div class="glass-effect rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto neon-glow">
             <div class="p-8">
                 <div class="flex justify-between items-center mb-8">
-                    <h3 class="text-3xl font-bold text-gradient">AI-Powered Booking</h3>
-                    <button onclick="closeAIAppointment()" class="text-gray-400 hover:text-white text-3xl transition-all duration-300 hover:scale-110">&times;</button>
+                    <h3 class="text-3xl font-bold text-gradient">Book Appointment</h3>
+                    <button onclick="closeAppointment()" class="text-gray-400 hover:text-white text-3xl transition-all duration-300 hover:scale-110">&times;</button>
                 </div>
                 
                 <div class="mb-6 p-4 glass-effect rounded-xl">
                     <div class="flex items-center mb-2">
-                        <span class="text-2xl mr-3">🤖</span>
-                        <span class="font-semibold text-gradient">AI Assistant:</span>
+                        <span class="text-2xl mr-3">🦷</span>
+                        <span class="font-semibold text-gradient">Booking Assistant:</span>
                     </div>
-                    <p class="text-gray-300">I'll help you find the perfect appointment slot based on your needs and preferences!</p>
+                    <p class="text-gray-300">We'll help you find the perfect appointment slot based on your needs and preferences!</p>
                 </div>
                 
-                <form id="aiAppointmentForm" onsubmit="submitAIAppointment(event)" class="space-y-6">
+                <form id="appointmentForm" onsubmit="submitAppointment(event)" class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
-                            <input type="text" id="aiPatientName" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                            <input type="text" id="patientName" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-300 mb-2">Phone Number *</label>
-                            <input type="tel" id="aiPatientPhone" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                            <input type="tel" id="patientPhone" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
                         </div>
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                        <input type="email" id="aiPatientEmail" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                        <input type="email" id="patientEmail" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">AI Service Selection *</label>
-                        <select id="aiServiceType" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
-                            <option value="">Let AI recommend the best service</option>
-                            <option value="AI Diagnostics">AI Diagnostics & Analysis</option>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Service Selection *</label>
+                        <select id="serviceType" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                            <option value="">Choose the best service for you</option>
+                            <option value="Digital Diagnostics">Digital Diagnostics & Analysis</option>
                             <option value="3D Treatment Planning">3D Treatment Planning</option>
                             <option value="Virtual Consultation">Virtual Reality Consultation</option>
-                            <option value="Smart Cleaning">AI-Guided Cleaning</option>
-                            <option value="Emergency AI">Emergency AI Assessment</option>
-                            <option value="Cosmetic AI">AI Cosmetic Planning</option>
+                            <option value="Smart Cleaning">Advanced Cleaning</option>
+                            <option value="Emergency">Emergency Assessment</option>
+                            <option value="Cosmetic">Cosmetic Planning</option>
                         </select>
                     </div>
                     
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-300 mb-2">Preferred Date *</label>
-                            <input type="date" id="aiAppointmentDate" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                            <input type="date" id="appointmentDate" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-300 mb-2">Time Preference</label>
-                            <select id="aiAppointmentTime" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
-                                <option value="">AI will optimize timing</option>
+                            <select id="appointmentTime" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                                <option value="">We'll optimize timing for you</option>
                                 <option value="Morning">Morning (8AM-12PM)</option>
                                 <option value="Afternoon">Afternoon (12PM-5PM)</option>
                                 <option value="Evening">Evening (5PM-8PM)</option>
-                                <option value="Flexible">Flexible - AI Choose Best</option>
+                                <option value="Flexible">Flexible - Choose Best</option>
                             </select>
                         </div>
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-300 mb-2">Describe Your Concerns</label>
-                        <textarea id="aiAppointmentNotes" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white" placeholder="Tell our AI about any symptoms, concerns, or specific requests..."></textarea>
+                        <textarea id="appointmentNotes" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white" placeholder="Tell us about any symptoms, concerns, or specific requests..."></textarea>
                     </div>
                     
                     <div class="flex space-x-4">
-                        <button type="button" onclick="closeAIAppointment()" class="flex-1 px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition-all duration-300">
+                        <button type="button" onclick="closeAppointment()" class="flex-1 px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition-all duration-300">
                             Cancel
                         </button>
                         <button type="submit" class="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-all duration-300 neon-glow font-semibold">
-                            Let AI Book My Appointment
+                            Book My Appointment
                         </button>
                     </div>
                 </form>
@@ -422,10 +427,10 @@
     </div>
 
     <!-- Success Animation -->
-    <div id="aiSuccessMessage" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 glass-effect p-8 rounded-2xl neon-glow hidden z-50 text-center">
+    <div id="successMessage" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 glass-effect p-8 rounded-2xl neon-glow hidden z-50 text-center">
         <div class="text-6xl mb-4 floating">✨</div>
-        <h3 class="text-2xl font-bold text-gradient mb-4">AI Booking Successful!</h3>
-        <p class="text-gray-300">Our AI has optimized your appointment and will send confirmation shortly.</p>
+        <h3 class="text-2xl font-bold text-gradient mb-4">Booking Successful!</h3>
+        <p class="text-gray-300">We have optimized your appointment and will send confirmation shortly.</p>
     </div>
 
     <script>
@@ -448,40 +453,40 @@
         }
 
         // Set minimum date to today
-        document.getElementById('aiAppointmentDate').min = new Date().toISOString().split('T')[0];
+        document.getElementById('appointmentDate').min = new Date().toISOString().split('T')[0];
 
-        function openAIAppointment() {
-            document.getElementById('aiAppointmentModal').classList.remove('hidden');
+        function openAppointment() {
+            document.getElementById('appointmentModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeAIAppointment() {
-            document.getElementById('aiAppointmentModal').classList.add('hidden');
+        function closeAppointment() {
+            document.getElementById('appointmentModal').classList.add('hidden');
             document.body.style.overflow = 'auto';
-            document.getElementById('aiAppointmentForm').reset();
+            document.getElementById('appointmentForm').reset();
         }
 
-        function submitAIAppointment(event) {
+        function submitAppointment(event) {
             event.preventDefault();
             
             const formData = {
-                name: document.getElementById('aiPatientName').value,
-                phone: document.getElementById('aiPatientPhone').value,
-                email: document.getElementById('aiPatientEmail').value,
-                service: document.getElementById('aiServiceType').value,
-                date: document.getElementById('aiAppointmentDate').value,
-                time: document.getElementById('aiAppointmentTime').value,
-                notes: document.getElementById('aiAppointmentNotes').value
+                name: document.getElementById('patientName').value,
+                phone: document.getElementById('patientPhone').value,
+                email: document.getElementById('patientEmail').value,
+                service: document.getElementById('serviceType').value,
+                date: document.getElementById('appointmentDate').value,
+                time: document.getElementById('appointmentTime').value,
+                notes: document.getElementById('appointmentNotes').value
             };
 
-            console.log('AI Appointment booked:', formData);
+            console.log('Appointment booked:', formData);
             
-            closeAIAppointment();
-            showAISuccess();
+            closeAppointment();
+            showSuccess();
         }
 
-        function showAISuccess() {
-            const successMsg = document.getElementById('aiSuccessMessage');
+        function showSuccess() {
+            const successMsg = document.getElementById('successMessage');
             successMsg.classList.remove('hidden');
             
             setTimeout(() => {
@@ -489,8 +494,8 @@
             }, 4000);
         }
 
-        function startAIConsultation() {
-            alert('🤖 AI Consultation starting... Our advanced AI will analyze your dental health needs and provide personalized recommendations!');
+        function startConsultation() {
+            alert('🦷 Consultation starting... Our advanced system will analyze your dental health needs and provide personalized recommendations!');
         }
 
         function open3DTour() {
@@ -501,14 +506,12 @@
             alert('🦷 3D Interactive Model activated! Explore detailed dental anatomy with our advanced 3D visualization.');
         }
 
-        function openAIChat() {
-            alert('💬 AI Chat Assistant activated! Our intelligent chatbot is ready to answer all your dental questions 24/7.');
-        }
+
 
         // Close modal when clicking outside
-        document.getElementById('aiAppointmentModal').addEventListener('click', function(e) {
+        document.getElementById('appointmentModal').addEventListener('click', function(e) {
             if (e.target === this) {
-                closeAIAppointment();
+                closeAppointment();
             }
         });
 
@@ -528,6 +531,12 @@
 
         // Initialize particles when page loads
         window.addEventListener('load', createAIParticles);
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
 
         // Add interactive hover effects to cards
         document.querySelectorAll('.card-3d').forEach(card => {
@@ -550,5 +559,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97530dae71954722',t:'MTc1NjIwODQxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97532004a68c1be1',t:'MTc1NjIwOTE2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
